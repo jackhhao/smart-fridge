@@ -18,12 +18,12 @@ class Recipe:
             fullPrompt = "give me " + self.num + " recipes uses either "
 
         for ing in self.ingredients:
-            fullPrompt += ing + " and "
+            fullPrompt += ing + ", "
 
         recipe = openai.Completion.create(
             engine="text-davinci-002",
             prompt=fullPrompt,
-            temperature=0.7,
+            temperature=1,
             max_tokens=1200,
             top_p=1,
             frequency_penalty=0,
@@ -37,4 +37,4 @@ class Recipe:
         recipeParts[1] = recipeLeftover[0]
         recipeParts[2] = recipeLeftover[1]
 
-        return (recipeParts)
+        return recipeParts
